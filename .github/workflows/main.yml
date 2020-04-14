@@ -13,7 +13,6 @@ action "Build Image" {
     IMAGE_URI = "041906867979.dkr.ecr.us-east-2.amazonaws.com/ci-cd-demo:latest"
   }
 
-### STEP 2 ECR LOGIN ###
   action "ECR Login" {
     uses = "actions/aws/cli@51b5c9b60da75d1d3f97ff91ed2e4efc19dd5474"
     needs = ["Build Image"]
@@ -28,7 +27,6 @@ action "Build Image" {
     ]
   }
 
-### STEP 3 PUSH  IMAGE ###
     action "Push ECR" {
       uses = "actions/docker/cli@c08a5fc9e0286844156fefff2c141072048141f6"
       needs = ["ECR Login"]
@@ -40,7 +38,6 @@ action "Build Image" {
     
     }
     
-### STEP 4 DEPLOY TO EKS ###
       action "Deploy to EKS" {
         uses = "actions/aws/kubectl@master"
         #   args = ["get all"]
@@ -56,7 +53,6 @@ action "Build Image" {
         }
       }
 
-### STEP 5 VERIFY DEPLOY BY SENDING SNS NOTIFICATION ###
         action "Verify EKS Deployment" {
           uses = "actions/aws/kubectl@master"
           needs = ["Deploy to EKS"]
