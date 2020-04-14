@@ -62,13 +62,15 @@
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
           echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
-
-        - name: setup kubeconfig
+          
+          
+      - name: setup kubeconfig
           id: setup-kubeconfig
           env: 
             CLUSTERNAME: istio-demo-lon
           run: |
             aws eks --region us-east-2 update-kubeconfig --name $CLUSTERNAME
+
 
       - name: Deploy k8s yaml
         id: deploy-k8s-yaml
