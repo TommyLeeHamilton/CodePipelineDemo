@@ -65,7 +65,7 @@
           
           
       - name: setup kubeconfig
-          id: setup-kubeconfig
+        id: setup-kubeconfig
           env: 
             CLUSTERNAME: istio-demo-lon
           run: |
