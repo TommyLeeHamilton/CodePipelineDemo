@@ -29,16 +29,16 @@ action "Build Image" {
   }
 
 
-action "Push ECR" {
-  uses = "actions/docker/cli@c08a5fc9e0286844156fefff2c141072048141f6"
-  needs = ["ECR Login"]
-  runs = ["/bin/sh", "-c",  "docker push $IMAGE_URI"]
-  secrets = ["AWS_ACCESS_KEY_ID", "AWS_SECRET_ACCESS_KEY"]
-  env = {
-    IMAGE_URI = "041906867979.dkr.ecr.us-east-2.amazonaws.com/ci-cd-demo:latest"
-  }
-
-}
+    action "Push ECR" {
+      uses = "actions/docker/cli@c08a5fc9e0286844156fefff2c141072048141f6"
+      needs = ["ECR Login"]
+      runs = ["/bin/sh", "-c",  "docker push $IMAGE_URI"]
+      secrets = ["AWS_ACCESS_KEY_ID", "AWS_SECRET_ACCESS_KEY"]
+      env = {
+        IMAGE_URI = "041906867979.dkr.ecr.us-east-2.amazonaws.com/ci-cd-demo:latest"
+      }
+    
+    }
 
 action "Deploy to EKS" {
   uses = "actions/aws/kubectl@master"
