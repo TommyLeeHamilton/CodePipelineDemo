@@ -40,7 +40,6 @@ action "Build Image" {
     
       action "Deploy to EKS" {
         uses = "actions/aws/kubectl@master"
-        #   args = ["get all"]
         args = ["apply -f app.yaml"]
         needs = ["Push ECR"]
         secrets = [
