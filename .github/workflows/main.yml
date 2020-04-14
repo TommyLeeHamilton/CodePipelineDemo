@@ -67,7 +67,7 @@
           ./kustomize edit set image example-eks=$IMAGE_NAME
           ./kustomize build . | kubectl apply -f -
           # Verify deployment
-          kubectl rollout status deployment/aws-example-octodex
+          kubectl rollout status deployment/octank-invogue
           # List Public IP of cluster
           kubectl get services -o wide
           kubectl get ingress
