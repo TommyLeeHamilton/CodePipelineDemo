@@ -61,7 +61,7 @@ action "Verify EKS Deployment" {
   args = ["get all"]
   secrets = ["AWS_ACCESS_KEY_ID", "AWS_SECRET_ACCESS_KEY", "KUBE_CONFIG_DATA"]
   env = {
-    AWS_DEFAULT_REGION = "us-east-1"
+    AWS_DEFAULT_REGION = "us-east-2"
   }
 }
 
