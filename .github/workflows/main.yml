@@ -66,9 +66,9 @@
           
       - name: setup kubeconfig
         id: setup-kubeconfig
-          env: 
-            CLUSTERNAME: istio-demo-lon
-          run: |
+        env: 
+          CLUSTERNAME: istio-demo-lon
+        run: |
             aws eks --region us-east-2 update-kubeconfig --name $CLUSTERNAME
 
 
