@@ -12,7 +12,7 @@ action "Build Image" {
   env = {
     IMAGE_URI = "041906867979.dkr.ecr.us-east-2.amazonaws.com/ci-cd-demo:latest"
   }
-}
+
 
 action "ECR Login" {
   uses = "actions/aws/cli@51b5c9b60da75d1d3f97ff91ed2e4efc19dd5474"
