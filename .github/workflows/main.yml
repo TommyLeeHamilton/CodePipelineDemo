@@ -14,19 +14,19 @@ action "Build Image" {
   }
 
 
-action "ECR Login" {
-  uses = "actions/aws/cli@51b5c9b60da75d1d3f97ff91ed2e4efc19dd5474"
-  needs = ["Build Image"]
-  env = {
-    AWS_DEFAULT_REGION = "us-east-2"
-    AWS_REGION = "$AWS_DEFAULT_REGION"
+  action "ECR Login" {
+    uses = "actions/aws/cli@51b5c9b60da75d1d3f97ff91ed2e4efc19dd5474"
+    needs = ["Build Image"]
+    env = {
+      AWS_DEFAULT_REGION = "us-east-2"
+      AWS_REGION = "$AWS_DEFAULT_REGION"
+    }
+    runs = ["/bin/sh", "-c", "aws ecr get-login --no-include-email | sh"]
+    secrets = [
+      "AWS_ACCESS_KEY_ID",
+      "AWS_SECRET_ACCESS_KEY",
+    ]
   }
-  runs = ["/bin/sh", "-c", "aws ecr get-login --no-include-email | sh"]
-  secrets = [
-    "AWS_ACCESS_KEY_ID",
-    "AWS_SECRET_ACCESS_KEY",
-  ]
-}
 
 
 action "Push ECR" {
