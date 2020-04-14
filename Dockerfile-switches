@@ -1,4 +1,9 @@
-#COPY CustomNginx/index.html /usr/share/nginx/html/index.html
-#Image from 23 Jul 2019
-#RUN echo y | apt-get update
-#RUN echo y | apt-get upgrade
+Customize
+============================
+COPY CustomNginx/index.html /usr/share/nginx/html/index.html
+
+
+Update the Image from 23 Jul 2019
+=============================
+RUN echo y | apt-get update
+RUN echo y | apt-get upgrade
