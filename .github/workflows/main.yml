@@ -1,6 +1,6 @@
   on: 
     release:
-      types: [push]
+      types: [created]
 
 
   name: CICD EKS
