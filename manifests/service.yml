@@ -5,9 +5,10 @@ metadata:
   annotations:
     alb.ingress.kubernetes.io/target-type: ip
 spec:
-  type: ClusterIP
+  type: LoadBalancer
   ports:
     - port: 80
+      protocol: TCP
       targetPort: 5000
   selector:
     app: octank-invogue
