@@ -1,7 +1,7 @@
 ####
 #### Copied directly from https://gist.github.com/pahud/4bdc6cde7b55c4fb8bd8c886dd57787e
 ####
-workflow "Demo workflow" {
+name: "Demo workflow" {
   on = "push"
   resolves = ["SNS Notification"]
 }
