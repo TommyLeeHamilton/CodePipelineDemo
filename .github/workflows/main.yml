@@ -2,13 +2,13 @@ name: Demo workflow
   on = [push]
   resolves = ["SNS Notification"]
 
-action "Build Image"
+action "Build Image" {
   uses = "actions/docker/cli@c08a5fc9e0286844156fefff2c141072048141f6"
   runs = ["/bin/sh", "-c", "docker build -t $IMAGE_URI ."]
   env = {
     IMAGE_URI = "041906867979.dkr.ecr.us-east-2.amazonaws.com/ci-cd-demo:latest"
   }
-
+}
   action "ECR Login" {
     uses = "actions/aws/cli@51b5c9b60da75d1d3f97ff91ed2e4efc19dd5474"
     needs = ["Build Image"]
@@ -67,3 +67,4 @@ action "Build Image"
               AWS_DEFAULT_REGION = "us-east-2",
               SNS_TOPIC_ARN = "arn:aws:sns:us-east-2:041906867979:ci-cd-sns",
             }
+          }  
