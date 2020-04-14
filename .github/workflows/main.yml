@@ -1,11 +1,7 @@
-####
-#### Copied directly from https://gist.github.com/pahud/4bdc6cde7b55c4fb8bd8c886dd57787e
-####
 name: Demo workflow
   on = [push]
   resolves = ["SNS Notification"]
 
-### STEP 1 BUILD IMAGE ###
 action "Build Image"
   uses = "actions/docker/cli@c08a5fc9e0286844156fefff2c141072048141f6"
   runs = ["/bin/sh", "-c", "docker build -t $IMAGE_URI ."]
