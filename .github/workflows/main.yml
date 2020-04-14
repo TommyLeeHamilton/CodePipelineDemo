@@ -7,9 +7,6 @@
       branches: [ master ]
 
 
-
-
-
   jobs:
     deploy:
       name: Deploy
