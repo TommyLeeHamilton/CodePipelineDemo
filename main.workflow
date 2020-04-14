@@ -10,7 +10,7 @@ action "Build Image" {
   uses = "actions/docker/cli@c08a5fc9e0286844156fefff2c141072048141f6"
   runs = ["/bin/sh", "-c", "docker build -t $IMAGE_URI ."]
   env = {
-    IMAGE_URI = "xxxxxxxx.dkr.ecr.ap-northeast-1.amazonaws.com/github-action-demo:latest"
+    IMAGE_URI = "041906867979.dkr.ecr.us-east-2.amazonaws.com/ci-cd-demo:latest"
   }
 }
 
@@ -18,7 +18,7 @@ action "ECR Login" {
   uses = "actions/aws/cli@51b5c9b60da75d1d3f97ff91ed2e4efc19dd5474"
   needs = ["Build Image"]
   env = {
-    AWS_DEFAULT_REGION = "ap-northeast-1"
+    AWS_DEFAULT_REGION = "us-east-2"
     AWS_REGION = "$AWS_DEFAULT_REGION"
   }
   runs = ["/bin/sh", "-c", "aws ecr get-login --no-include-email | sh"]
@@ -35,7 +35,7 @@ action "Push ECR" {
   runs = ["/bin/sh", "-c",  "docker push $IMAGE_URI"]
   secrets = ["AWS_ACCESS_KEY_ID", "AWS_SECRET_ACCESS_KEY"]
   env = {
-    IMAGE_URI = "xxxxxxxx.dkr.ecr.ap-northeast-1.amazonaws.com/github-action-demo:latest"
+    IMAGE_URI = "041906867979.dkr.ecr.us-east-2.amazonaws.com/ci-cd-demo:latest"
   }
 
 }
@@ -51,7 +51,7 @@ action "Deploy to EKS" {
     "AWS_SECRET_ACCESS_KEY",
   ]
   env = {
-    AWS_DEFAULT_REGION = "ap-northeast-1"
+    AWS_DEFAULT_REGION = "us-east-2"
   }
 }
 
@@ -61,7 +61,7 @@ action "Verify EKS Deployment" {
   args = ["get all"]
   secrets = ["AWS_ACCESS_KEY_ID", "AWS_SECRET_ACCESS_KEY", "KUBE_CONFIG_DATA"]
   env = {
-    AWS_DEFAULT_REGION = "ap-northeast-1"
+    AWS_DEFAULT_REGION = "us-east-1"
   }
 }
 
