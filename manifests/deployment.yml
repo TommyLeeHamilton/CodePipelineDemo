@@ -2,7 +2,7 @@
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
-  name: aws-example-octodex
+  name: octank-invogue
 spec:
   replicas: 1
   strategy:
@@ -13,10 +13,10 @@ spec:
   template:
     metadata:
       labels:
-        app: aws-example-octodex
+        app: octank-invogue
     spec:
       containers:
-      - name: aws-example-octodex
+      - name: octank-invogue
         # image: 00000000000000.dkr.ecr.my-region.amazonaws.com/example-eks:tag
         # image: REGISTRY/REPO:TAG
         # The full image will be dynamically added by Kustomize in the workflow.
