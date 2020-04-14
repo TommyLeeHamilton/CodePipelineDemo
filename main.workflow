@@ -68,10 +68,10 @@ action "Verify EKS Deployment" {
 action "SNS Notification" {
   uses = "actions/aws/cli@51b5c9b60da75d1d3f97ff91ed2e4efc19dd5474"
   needs = ["Verify EKS Deployment"]
-  runs = ["/bin/sh", "-c", "aws --region ap-northeast-1 sns publish --topic-arn $SNS_TOPIC_ARN --message '[OK] Deploy completed'"]
+  runs = ["/bin/sh", "-c", "aws --region us-east-2 sns publish --topic-arn $SNS_TOPIC_ARN --message '[OK] Deploy completed'"]
   secrets = ["AWS_ACCESS_KEY_ID", "AWS_SECRET_ACCESS_KEY"]
   env = {
-    AWS_DEFAULT_REGION = "ap-northeast-1",
-    SNS_TOPIC_ARN = "arn:aws:sns:ap-northeast-1:xxxxxxxx:SNS2IM",
+    AWS_DEFAULT_REGION = "us-east-2",
+    SNS_TOPIC_ARN = "arn:aws:sns:us-east-2:041906867979:ci-cd-sns",
   }
 }
