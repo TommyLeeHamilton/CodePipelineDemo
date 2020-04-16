@@ -1,7 +1,7 @@
 Customize
 ============================
 COPY CustomNginx/index.html /usr/share/nginx/html/index.html
-
+COPY CustomNginx/indexv2.html /usr/share/nginx/html/index.html
 
 Update the Image from 23 Jul 2019
 =============================
