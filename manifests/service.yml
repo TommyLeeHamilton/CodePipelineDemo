@@ -2,6 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: octank-invogue
+  namespace: test
   annotations:
     alb.ingress.kubernetes.io/target-type: ip
 spec:
