@@ -26,7 +26,7 @@ spec:
     - octank-invogue-gw
     # Istio virtual service host names (optional)
     hosts: 
-    - octank-invogue-primary
+    - octank-invogue
     # Istio traffic policy (optional)
     trafficPolicy:
       tls:
