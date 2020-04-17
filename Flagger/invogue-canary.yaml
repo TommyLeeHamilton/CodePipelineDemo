@@ -2,7 +2,7 @@ apiVersion: flagger.app/v1beta1
 kind: Canary
 metadata:
   name: octank-invogue
-  namespace: test
+  namespace: default
 spec:
   # deployment reference
   targetRef:
