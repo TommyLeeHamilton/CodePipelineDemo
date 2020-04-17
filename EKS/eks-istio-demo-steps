@@ -39,9 +39,12 @@ install istio:
 istioctl manifest apply --set profile=demo
 
 
-Enable automatic side-car injection:
+Enable automatic side-car injection on default namespace:
 kubectl label namespace default istio-injection=enabled
 
+Create "Test" namespace (to be used later) and enable automatic side-car injection
+kubectl create ns test
+kubectl label namespace test istio-injection=enabled
 
 Deploy Bookinfo demo application
 kubectl apply -f samples/bookinfo/platform/kube/bookinfo.yaml
