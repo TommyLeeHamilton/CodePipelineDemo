@@ -3,6 +3,7 @@ apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
   name: octank-invogue
+  namespace: test
 spec:
   replicas: 1
   strategy:
