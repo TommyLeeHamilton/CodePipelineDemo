@@ -16,7 +16,7 @@ spec:
   autoscalerRef:
     apiVersion: autoscaling/v2beta1
     kind: HorizontalPodAutoscaler
-    name: octank-invogue
+    name: octank-invogue-hpa
   service:
     # service port number
     port: 9898

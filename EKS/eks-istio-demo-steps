@@ -28,12 +28,15 @@ chmod +x ./kubectl
 sudo mv ./kubectl /usr/local/bin/kubectl
 kubectl get nodes (should see 3 nodes listed)
 
+Download and install Kustomize
+curl -s -o kustomize --location https://github.com/kubernetes-sigs/kustomize/releases/download/v3.1.0/kustomize_3.1.0_linux_amd64
+chmod u+x ./kustomize
+
 download Istio and setup istioctl
 curl -L https://istio.io/downloadIstio | sh -
 cd istio-1.5.0
 sudo cp ./bin/istioctl /usr/local/bin/istioctl
 istioctl version
-
 
 install istio: 
 istioctl manifest apply --set profile=demo
