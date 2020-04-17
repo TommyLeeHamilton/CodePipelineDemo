@@ -1,0 +1,13 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: octank-invogue
+spec:
+  host: octank-invogue
+  subsets:
+  - name: octank-invogue
+    labels:
+      app: octank-invogue
+  - name: octank-invogue-primary
+    labels:
+      app: octank-invogue-primary
