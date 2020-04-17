@@ -2,6 +2,7 @@ apiVersion: flagger.app/v1beta1
 kind: Canary
 metadata:
   name: octank-invogue
+  namespace: test
 spec:
   # deployment reference
   targetRef:
@@ -28,15 +29,16 @@ spec:
     hosts: 
     - "*"
     # Istio traffic policy (optional)
-    match:
-    - uri:
-        exact: /invogue
-    rewrite:
-      uri: / trafficPolicy:
+    trafficPolicy:
       tls:
         # use ISTIO_MUTUAL when mTLS is enabled
         mode: ISTIO_MUTUAL
     # Istio retry policy (optional)
+    match:
+    - uri:
+        exact: /invogue
+    rewrite:
+      uri: /
     retries:
       attempts: 3
       perTryTimeout: 1s
