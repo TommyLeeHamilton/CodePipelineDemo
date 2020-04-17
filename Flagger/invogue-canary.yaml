@@ -19,9 +19,9 @@ spec:
     name: octank-invogue-hpa
   service:
     # service port number
-    port: 9898
+    port: 80
     # container port number or name (optional)
-    targetPort: 9898
+    targetPort: 80
     # Istio gateways (optional)
     gateways:
     - public-gateway.istio-system.svc.cluster.local
