@@ -25,7 +25,7 @@ spec:
     gateways:
     - public-gateway.istio-system.svc.cluster.local
     # Istio virtual service host names (optional)
-    hosts:
+    hosts: octank-invogue
     # Istio traffic policy (optional)
     trafficPolicy:
       tls:
