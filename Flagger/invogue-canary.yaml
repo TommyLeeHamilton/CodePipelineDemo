@@ -60,7 +60,7 @@ spec:
       # percentage (0-100)
       thresholdRange:
         min: 99
-      interval: 1m
+      interval: 30s
     - name: latency
       templateRef:
         name: latency
