@@ -31,7 +31,7 @@ spec:
     trafficPolicy:
       tls:
         # use ISTIO_MUTUAL when mTLS is enabled
-        mode: ISTIO_MUTUAL
+        mode: PERMISSIVE
     # Istio retry policy (optional)
     retries:
       attempts: 3
@@ -55,7 +55,10 @@ spec:
       thresholdRange:
         min: 99
       interval: 1m
-    - name: request-duration
+    - name: latency
+      templateRef:
+        name: latency
+        namespace: istio-system
       # maximum req duration P99
       # milliseconds
       thresholdRange:
