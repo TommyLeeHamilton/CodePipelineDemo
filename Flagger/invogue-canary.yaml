@@ -31,7 +31,7 @@ spec:
     trafficPolicy:
       tls:
         # use ISTIO_MUTUAL when mTLS is enabled
-        mode: PERMISSIVE
+        mode: ISTIO_MUTUAL
     # Istio retry policy (optional)
     retries:
       attempts: 3
