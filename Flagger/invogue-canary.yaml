@@ -53,14 +53,14 @@ spec:
     maxWeight: 50
     # canary increment step
     # percentage (0-100)
-    stepWeight: 10
+    stepWeight: 20
     metrics:
     - name: request-success-rate
       # minimum req success rate (non 5xx responses)
       # percentage (0-100)
       thresholdRange:
         min: 99
-      interval: 30s
+      interval: 10s
     - name: latency
       templateRef:
         name: latency
