@@ -50,7 +50,7 @@ spec:
     threshold: 5
     # max traffic percentage routed to canary
     # percentage (0-100)
-    maxWeight: 50
+    maxWeight: 40
     # canary increment step
     # percentage (0-100)
     stepWeight: 20
@@ -69,4 +69,4 @@ spec:
       # milliseconds
       thresholdRange:
         max: 500
-      interval: 30s
+      interval: 10s
