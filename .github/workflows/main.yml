@@ -49,7 +49,7 @@
       - name: setup kubeconfig
         id: setup-kubeconfig
         env: 
-          CLUSTERNAME: my-demo
+          CLUSTERNAME: ci-cd-demo-warmup2
         run: |
             aws eks --region us-east-2 update-kubeconfig --name $CLUSTERNAME
 
