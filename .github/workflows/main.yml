@@ -67,5 +67,5 @@
           ./kustomize edit set image example-eks=$IMAGE_NAME
           ./kustomize build . | kubectl apply -f -
           # List Public IP of cluster
-          kubectl get services -o wide
-          kubectl get ingress
+          kubectl get services -o wide -n test
+          kubectl get ingress -n test
