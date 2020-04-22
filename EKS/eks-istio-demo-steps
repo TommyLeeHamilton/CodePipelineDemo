@@ -1,19 +1,34 @@
 setup a free tier EC2 instance with 20GB storage
 
-export public key from your ec2 jumpbox
-TOKEN=`curl -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600"` \
-&& curl -H "X-aws-ec2-metadata-token: $TOKEN" –v http://169.254.169.254/latest/meta-data/public-keys/0/openssh-key > jumpbox-public.pem
+run aws configure and enter your access key and secret key. set region to us-east-2
 
 install docker engine on your jumpbox
 yes | sudo yum install update
 yes | sudo yum install docker
 
 
+SOURCE: https://kubernetes.io/docs/tasks/tools/install-kubectl/
+install kubectl
+curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
+chmod +x ./kubectl
+sudo mv ./kubectl /usr/local/bin/kubectl
+
+SOURCE: https://docs.aws.amazon.com/eks/latest/userguide/getting-started-eksctl.html
+install eksctl:
+curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
+sudo mv /tmp/eksctl /usr/local/bin
+eksctl version
+
+export public key from your ec2 jumpbox
+TOKEN=`curl -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600"` \
+&& curl -H "X-aws-ec2-metadata-token: $TOKEN" –v http://169.254.169.254/latest/meta-data/public-keys/0/openssh-key > jumpbox-public.pem
+
+
 setup cluster with eksctl:
 eksctl create cluster \
---name istio-demo-lon \
+--name my-demo \
 --region us-east-2 \
---nodegroup-name standard-workers \
+--nodegroup-name my-demo \
 --node-type t3.medium \
 --nodes 3 \
 --nodes-min 1 \
@@ -22,18 +37,25 @@ eksctl create cluster \
 --ssh-public-key jumpbox-public.pem \
 --managed
 
-install kubectl
-curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
-chmod +x ./kubectl
-sudo mv ./kubectl /usr/local/bin/kubectl
 kubectl get nodes (should see 3 nodes listed)
 
+Build CI-CD pipeline with git actions
+If you don't already have one, create a new github account: https://github.com/
+Download git desktop: https://desktop.github.com/
+Clone my repo - https://github.com/TommyLeeHamilton/ci-cd-demo.git
+in your local github desktop client, open the github client
+
+
+SOURCE: https://istio.io/docs/ops/diagnostic-tools/istioctl/
 download Istio and setup istioctl
 curl -L https://istio.io/downloadIstio | sh -
 cd istio-1.5.0
 sudo cp ./bin/istioctl /usr/local/bin/istioctl
 istioctl version
 
+
+
+SOURCE: https://istio.io/docs/setup/getting-started/
 install istio: 
 istioctl manifest apply --set profile=demo
 
@@ -80,8 +102,8 @@ Create destination rules for your bookinfo services
 kubectl apply -f samples/bookinfo/networking/destination-rule-all.yaml
 
 
-Create virtual service to split traffic 50/50 between v1 and v3
-kubectl apply -f samples/bookinfo/networking/virtual-service-reviews-50-v3.yaml
+Create virtual service to split traffic 50/50 between v2 and v3
+kubectl apply -f samples/bookinfo/networking/virtual-service-reviews-v2-v3.yaml
 
 Go back to your productpage website and hit refresh a few times, notice anything different?
 Go to your kiali dashboard
