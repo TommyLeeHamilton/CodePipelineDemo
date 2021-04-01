@@ -48,7 +48,7 @@ jobs:
     - name: setup kubeconfig
       id: setup-kubeconfig
       env: 
-        CLUSTERNAME: ci-cd-demo-2
+        CLUSTERNAME: my-demo2
       run: |
           aws eks --region us-east-2 update-kubeconfig --name $CLUSTERNAME
 
