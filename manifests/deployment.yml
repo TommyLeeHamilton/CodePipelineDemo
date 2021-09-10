@@ -15,6 +15,8 @@ spec:
       maxUnavailable: 1
   minReadySeconds: 5
   template:
+    annotations:
+      sidecar.istio.io/inject: "true"
     metadata:
       labels:
         app: octank-invogue
