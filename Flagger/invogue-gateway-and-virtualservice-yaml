@@ -18,7 +18,7 @@ apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
   name: octank-invogue
-  namespace: user1-istio
+  namespace: user1
 spec:
   hosts:
   - "*"
