@@ -2,7 +2,7 @@ apiVersion: flagger.app/v1beta1
 kind: Canary
 metadata:
   name: octank-invogue
-  namespace: user1-istio
+  namespace: user1
 spec:
   # deployment reference
   targetRef:
@@ -64,7 +64,7 @@ spec:
     - name: latency
       templateRef:
         name: latency
-        namespace: user1-istio
+        namespace: user1
       # maximum req duration P99
       # milliseconds
       thresholdRange:
