@@ -3,7 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: octank-invogue
-  namespace: test
+  namespace: user1-istio
 spec:
   replicas: 1
   selector:
@@ -21,10 +21,7 @@ spec:
     spec:
       containers:
       - name: octank-invogue
-        # image: 00000000000000.dkr.ecr.my-region.amazonaws.com/example-eks:tag
-        # image: REGISTRY/REPO:TAG
-        # The full image will be dynamically added by Kustomize in the workflow.
-        image: example-eks
+        image: nginx
         ports:
         - containerPort: 5000
         resources:
