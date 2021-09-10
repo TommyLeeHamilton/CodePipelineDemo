@@ -3,7 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: octank-invogue
-  namespace: user1-istio
+  namespace: user1
 spec:
   replicas: 1
   selector:
