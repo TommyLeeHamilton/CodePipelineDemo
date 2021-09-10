@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
       - name: octank-invogue
-        image: nginx
+        image: nginxinc/nginx-unprivileged
         ports:
         - containerPort: 5000
         resources:
