@@ -2,7 +2,7 @@ apiVersion: autoscaling/v2beta1
 kind: HorizontalPodAutoscaler
 metadata:
   name: octank-invogue-hpa
-  namespace: test
+  namespace: user1-istio
 spec:
   scaleTargetRef:
     apiVersion: apps/v1

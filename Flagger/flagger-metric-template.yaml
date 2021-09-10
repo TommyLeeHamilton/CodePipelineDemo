@@ -2,7 +2,7 @@ apiVersion: flagger.app/v1beta1
 kind: MetricTemplate
 metadata:
   name: latency
-  namespace: istio-system
+  namespace: user1-istio
 spec:
   provider:
     type: prometheus

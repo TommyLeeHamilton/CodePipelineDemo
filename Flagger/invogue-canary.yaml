@@ -64,7 +64,7 @@ spec:
     - name: latency
       templateRef:
         name: latency
-        namespace: istio-system
+        namespace: user1-istio
       # maximum req duration P99
       # milliseconds
       thresholdRange:
